@@ -20,6 +20,7 @@
         >Download video</a
       >
     </div>
+    <VideoPlayer class="rounded" :videoId="lesson.videoId" />
     <p>{{ lesson.text }}</p>
   </div>
 </template>
