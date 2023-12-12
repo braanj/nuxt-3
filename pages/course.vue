@@ -10,10 +10,10 @@
     </div>
 
     <div class="flex flex-grow gap-6 h-full w-full">
-      <div class="prose p-6 rounded bg-slate-200 w-[25%]">
+      <div class="prose p-6 rounded bg-white w-[25%]">
         <h2>Chapters</h2>
       </div>
-      <div class="prose p-6 rounded bg-slate-200 w-full">
+      <div class="prose p-6 rounded bg-white w-full max-w-full">
         <NuxtPage />
       </div>
     </div>
