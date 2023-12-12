@@ -6,4 +6,6 @@
     deserunt perspiciatis temporibus sunt molestiae? Animi totam doloremque
     saepe sed odit?
   </p>
+  <p>Chapter slug : {{ $route.params.chapterSlug }}</p>
+  <p>Lessong slug : {{ $route.params.lessonSlug }}</p>
 </template>
