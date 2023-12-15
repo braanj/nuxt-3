@@ -53,4 +53,19 @@ const lesson = computed(() => {
     (lesson) => lesson.slug === route.params.lessonSlug
   );
 });
+
+/**
+ * Creates the page' title
+ * @return {string} - page title
+ */
+const title = computed(() => {
+  return `${lesson.value.title} - ${course.title}`;
+});
+
+/**
+ * Nuxt Built-in composable that sets the page's SEO metadata
+ */
+useHead({
+  title,
+});
 </script>
