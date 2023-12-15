@@ -19,7 +19,11 @@
               <li v-for="(lesson, index) in chapter.lessons" :key="lesson.slug">
                 <NuxtLink
                   class="no-underline"
-                  :href="`/course/chapter/${chapter.slug}/lesson/${lesson.slug}`"
+                  :class="{
+                    'text-blue-400': lesson.path === $route.fullPath,
+                    'text-gray-400': lesson.path !== $route.fullPath,
+                  }"
+                  :to="lesson.path"
                   >{{ lesson.title }}</NuxtLink
                 >
               </li>
