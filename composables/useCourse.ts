@@ -1,4 +1,4 @@
-import courseData from "./courseData"
+import courseData from "./courseData";
 export const useCourse = () => {
-  return courseData
-}
+  return courseData;
+};
