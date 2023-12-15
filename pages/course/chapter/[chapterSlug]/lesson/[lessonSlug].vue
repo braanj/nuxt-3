@@ -22,6 +22,11 @@
     </div>
     <VideoPlayer class="rounded" :videoId="lesson.videoId" />
     <p>{{ lesson.text }}</p>
+    <ClientOnly>
+      <LessonCompleteButton
+        :model-value="isLessonComplete"
+        @update:model-value="toggleComplete"
+    /></ClientOnly>
   </div>
 </template>
 
@@ -68,4 +73,42 @@ const title = computed(() => {
 useHead({
   title,
 });
+
+/**
+ * Initialize the course progress state when nothing is in it
+ * @returns {Array} - Empty array
+ */
+const progress = useState("progress", () => {
+  return [];
+});
+
+/**
+ * Checks the lesson state (complete or uncomplete)
+ * @returns {Boolean} - lesson state
+ */
+const isLessonComplete = computed(() => {
+  // If the chapter isn't in the state, the lesson isn't complete
+  if (!progress.value[chapter.value.number - 1]) {
+    return false;
+  }
+  // If the lesson isn't in the state, it isn't complete
+  if (!progress.value[chapter.value.number - 1][lesson.value.number - 1]) {
+    return false;
+  }
+
+  // The lesson is complete
+  return progress.value[chapter.value.number - 1][lesson.value.number - 1];
+});
+
+/**
+ * Toggles the state of the lesson
+ */
+const toggleComplete = () => {
+  if (!progress.value[chapter.value.number - 1]) {
+    progress.value[chapter.value.number - 1] = [];
+  }
+
+  progress.value[chapter.value.number - 1][lesson.value.number - 1] =
+    !isLessonComplete.value;
+};
 </script>
