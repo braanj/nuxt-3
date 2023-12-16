@@ -75,12 +75,10 @@ useHead({
 });
 
 /**
- * Initialize the course progress state when nothing is in it
+ * Initialize the course progress state using local storage
  * @returns {Array} - Empty array
  */
-const progress = useState("progress", () => {
-  return [];
-});
+const progress = useLocalStorage("progress", []);
 
 /**
  * Checks the lesson state (complete or uncomplete)
