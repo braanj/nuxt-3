@@ -48,6 +48,13 @@ const chapter = computed(() => {
   );
 });
 
+if (!chapter.value) {
+  throw createError({
+    statusCode: "404",
+    message: "Chapter not found!",
+  });
+}
+
 /**
  * Finds the lesson in the chapter based on the lesson slug passed through the route
  * @returns {object} - lesson data
@@ -57,6 +64,13 @@ const lesson = computed(() => {
     (lesson) => lesson.slug === route.params.lessonSlug
   );
 });
+
+if (!lesson.value) {
+  throw createError({
+    statusCode: "404",
+    message: "Lesson not found!",
+  });
+}
 
 /**
  * Creates the page' title
