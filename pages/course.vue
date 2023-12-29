@@ -1,9 +1,12 @@
 <template>
-  <div class="prose mb-10">
-    <h1>
-      <span class="font-medium"> Course: </span>
-      <span class="font-bold">Nuxt router</span>
-    </h1>
+  <div class="flex gap-4 justify-between mb-5 items-start">
+    <div class="prose">
+      <h1>
+        <span class="font-medium"> Course: </span>
+        <span class="font-bold">Nuxt router</span>
+      </h1>
+    </div>
+    <UserCard />
   </div>
 
   <div class="flex flex-grow gap-6 h-full w-full">
