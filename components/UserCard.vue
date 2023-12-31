@@ -7,13 +7,25 @@
     />
     <div class="flex flex-col">
       <span class="font-bold">{{ user.name }}</span>
-      <button class="text-start">Log out</button>
+      <button class="text-start" @click="logout">Log out</button>
     </div>
   </div>
 </template>
 
 <script setup>
 const USER = useSupabaseUser();
+const { auth } = useSupabaseClient();
+
+const logout = async () => {
+  const { error } = await auth.signOut();
+
+  if (error) {
+    console.error(error);
+    return;
+  }
+
+  await navigateTo("/login");
+};
 
 const user = computed(() => {
   if (!USER.value) return;
