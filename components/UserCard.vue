@@ -1,5 +1,5 @@
 <template>
-  <div class="flex gap-3 items-center py-3 px-4 bg-white rounded">
+  <div v-if="user" class="flex gap-3 items-center py-3 px-4 bg-white rounded">
     <img
       :src="user.avatar"
       class="w-10 h-10 rounded-full"
@@ -16,6 +16,8 @@
 const USER = useSupabaseUser();
 
 const user = computed(() => {
+  if (!USER.value) return;
+
   return {
     name: USER.value.user_metadata.name,
     avatar: USER.value.user_metadata.avatar_url,
